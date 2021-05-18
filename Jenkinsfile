@@ -3,8 +3,9 @@ pipeline {
      stages {
         stage("Build") {
             steps {
-                echo "logged in as USER:";
                 echo "$USER";
+                sh "pwd"
+                sh "export PATH="$PATH:"/usr/local/bin/"
                 sh "/usr/local/bin/npm install"
                 sh "/usr/local/bin/npm run build"
             }
