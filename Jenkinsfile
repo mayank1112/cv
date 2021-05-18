@@ -3,6 +3,8 @@ pipeline {
      stages {
         stage("Build") {
             steps {
+                echo "logged in as USER:";
+                echo "$USER";
                 sh "npm install"
                 sh "npm run build"
             }
