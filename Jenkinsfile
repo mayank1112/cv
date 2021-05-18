@@ -6,8 +6,9 @@ pipeline {
                 echo "$USER";
                 sh "pwd"
                 sh "export PATH=$PATH:/usr/local/bin/"
-                sh "/usr/local/bin/npm install"
-                sh "/usr/local/bin/npm run build"
+                sh "echo $PATH"
+                sh "npm install"
+                sh "npm run build"
             }
         }
         stage("Deploy") {
