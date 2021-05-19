@@ -674,7 +674,6 @@ a:hover, a:hover h4 {
 }
 
 .container .scrollToTopButton {
-
   color: #fff;
   opacity: .85;
   transition: opacity .3s; 
@@ -684,8 +683,21 @@ a:hover, a:hover h4 {
 .container .scrollToTopButton:hover {
   opacity: 1;
   background: #3a8ece;
+  border-color: #5da4d9;
 }
 
 .scrollToTopIcon {
   padding: 0 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .container .scrollToTopButton {
+    border-color: #3eb747;
+    background: #45bf4e;
+  }
+  .container .scrollToTopButton:hover {
+    opacity: 1;
+    border-color: #3eb747;
+    background: #45bf4e;
+  }
 }

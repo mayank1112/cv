@@ -68,7 +68,7 @@ function App() {
             </div>
             <div className="col l12 m12 s12  mobile sidebar-item">
               <AnimatedSection>
-                <a href="tel:7823616840">
+                <a href="tel:+447823616840">
                   <div className="row">
                     <div className="col m12 s12 l3 icon">
                       <i className="fa fa-phone"></i>
