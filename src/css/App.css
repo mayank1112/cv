@@ -84,7 +84,7 @@ h5 {
 */
 body {
   background-color: #eae8e7;
-  color: #767270;
+  color: #52504f;
   text-align: center;
 }
 .container {
@@ -282,7 +282,7 @@ body {
   line-height: 20pt;
 }
 .custom-content-wrapper h3 span {
-  color: #767270;
+  color: #52504f;
 }
 .custom-content-wrapper span {
   color: #5da4d9;
@@ -674,16 +674,18 @@ a:hover, a:hover h4 {
 }
 
 .container .scrollToTopButton {
-  border-color: #000;
+
   color: #fff;
-  opacity: .8;
-  transition: opacity .3s;
-  background: #000;
+  opacity: .85;
+  transition: opacity .3s; 
+  border-color: #5da4d9;
+  background: #3a8ece;
 }
 .container .scrollToTopButton:hover {
-  opacity: 1; 
+  opacity: 1;
+  background: #3a8ece;
 }
 
 .scrollToTopIcon {
-  padding: 0 10px;
+  padding: 0 8px;
 }
