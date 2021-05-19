@@ -637,7 +637,7 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   font-weight: normal;
 }
 
-a:hover {
+a:hover, a:hover h4 {
   text-decoration: underline;
 }
 
@@ -653,4 +653,22 @@ a:hover {
 
 .work-content ol {
   text-align: left;
+}
+
+.fadeIn {
+  opacity: 0;
+  animation-delay: .2s;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+.invisible {
+  opacity: 0;
 }
