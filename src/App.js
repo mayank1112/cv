@@ -4,6 +4,7 @@ import { Achievement } from './Achievement';
 import { useState } from 'react';
 import { useScroll } from './useScroll';
 import AnimatedSection from './AnimatedSection';
+import ScrollTop from "react-scrolltop-button";
 
 const INITIAL_BOTTOM = 23;
 
@@ -106,7 +107,7 @@ function App() {
               <AnimatedSection>
                 <div className="row">
                   <div className="col m12 l3 s12 icon">
-                    <i className="fa fa-code"></i>
+                    <i className="fa fa-university"></i>
                   </div>
                   <div className="col m12 l9 s12 skill-line a5 wow" data-wow-delay="0.5s">
                     <h3>Professional Skills </h3>
@@ -211,6 +212,12 @@ function App() {
           </div>
         </section>
       </div>
+      <ScrollTop
+        text={
+          <div className='scrollToTopIcon'><i className='fa fa-angle-double-up upArrow'></i></div>
+        }
+        className="scrollToTopButton"
+      />
     </div>
   );
 }

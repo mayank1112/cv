@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import handleViewport from 'react-in-viewport';
 import { useScroll } from './useScroll';
 
 const OFFSET = 0;
@@ -27,6 +26,4 @@ const AnimatedSection = ({ children }) => {
     );
 }
 
-const AnimatedSectionHoc = handleViewport(AnimatedSection);
-
-export default AnimatedSectionHoc;
+export default AnimatedSection;

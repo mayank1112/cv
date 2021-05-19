@@ -672,3 +672,18 @@ a:hover, a:hover h4 {
 .invisible {
   opacity: 0;
 }
+
+.container .scrollToTopButton {
+  border-color: #000;
+  color: #fff;
+  opacity: .8;
+  transition: opacity .3s;
+  background: #000;
+}
+.container .scrollToTopButton:hover {
+  opacity: 1; 
+}
+
+.scrollToTopIcon {
+  padding: 0 10px;
+}
