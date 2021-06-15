@@ -76,7 +76,7 @@ function App() {
                     <div className="col m12 s12 l9 info wow a2">
                       <div className="section-item-details">
                         <div className="personal">
-                          <h4>(+44)-78236-16840</h4>
+                          <h4><img src='/assets/images/phone.png' alt='' /></h4>
                           <span>mobile</span>
                         </div>
                       </div>
@@ -87,14 +87,14 @@ function App() {
             </div>
             <div className="col l12 m12 s12  email sidebar-item ">
               <AnimatedSection>
-                <a href="mailto:someone@example.com"><div className="row">
+                <a href="mailto:contact@mayank.uk"><div className="row">
                   <div className="col m12 s12 l3 icon">
                     <i className="fa fa-envelope"></i>
                   </div>
                   <div className="col m12 s12 l9 info wow a3">
                     <div className="section-item-details">
                       <div className="personal">
-                        <h4>contact@mayank.uk</h4>
+                        <h4><img src='/assets/images/email.png' alt='' /></h4>
                         <span>e-mail</span>
                       </div>
                     </div>
