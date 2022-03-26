@@ -98,7 +98,7 @@ body {
 .sidebar {
   text-align: left;
   color: #ffffff;
-  background-color: #5da4d9;
+  background-color: #41a7e1;
   overflow: hidden;
   display: block;
 }
@@ -145,14 +145,29 @@ body {
   position: absolute;
   right: 11px;
   bottom: 23px;
-  color: transparent;
+  color: white;
 }
 .sidebar .heading .title span {
   margin-top: -5px;
-  font-size: 10pt;
+  font-size: 11pt;
   margin: 0px;
   padding: 0px;
   line-height: 15pt;
+}
+.sidebar .heading .title h2 a {
+  height: 32px;
+  width: 32px;
+  display: inline-block;
+  line-height: 1.2;
+}
+.sidebar .heading .title h2 {
+  line-height: 1.2;
+}
+.sidebar .heading .title h2 img {
+  transition: opacity .2s;
+}
+.sidebar .heading .title h2 div {
+  height: 50px
 }
 .sidebar .icon {
   margin-top: 8px;
@@ -288,7 +303,7 @@ body {
   margin-bottom: 25px;
   border-bottom: 1px solid #bdbdbd;
 }
-.custom-content-wrapper:last-child {
+.custom-content-wrapper-last {
   border-bottom: initial;
 }
 .custom-content-wrapper h3 {

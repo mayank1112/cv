@@ -6,11 +6,14 @@ import { useScroll } from './useScroll';
 import AnimatedSection from './AnimatedSection';
 import ScrollTop from "react-scrolltop-button";
 
-const INITIAL_BOTTOM = 23;
+const INITIAL_BOTTOM = 15;
 
 function App() {
   const [bottom, setBottom] = useState(`${INITIAL_BOTTOM}px`);
-  const [textShadow, setTextShadow] = useState('0 0 0 white');
+  const [textShadow, setTextShadow] = useState('1px 1px 1px black');
+  const [textOpacity, setTextOpacity] = useState(1);
+  const [iconOpacity, setIconOpacity] = useState(.8);
+  const [playing, setPlaying] = useState(false);
 
   const listenToScroll = () => {
     const winScroll =
@@ -21,11 +24,30 @@ function App() {
       document.documentElement.clientHeight
 
     const scrolled = winScroll / height;
-    setTextShadow(`0 0 ${scrolled * 100}px white`);
+    setTextShadow(`1px 1px ${scrolled * 100}px black`);
+    setTextOpacity(1 - scrolled * 24);
     setBottom(`${INITIAL_BOTTOM + scrolled * 800}px`);
   }
 
   useScroll(listenToScroll, []);
+
+  const playSound = (event) => {
+    setPlaying(true);
+    setIconOpacity(.6);
+    event.preventDefault();
+    const audio = new Audio('/assets/sounds/mayank.mp3');
+    audio.play();
+    audio.onended = () => {
+      setIconOpacity(.8);
+      setPlaying(false);
+    }
+  }
+  const mouseOver = () => {
+    setIconOpacity(1);
+  }
+  const mouseOut = () => {
+    setIconOpacity(.8);
+  }
 
   return (
     <div className="container">
@@ -34,12 +56,24 @@ function App() {
           <div className="row">
             <div className="heading">
               <div className="feature-img">
-                <a href="/">
-                  <img src="/assets/images/mayank-mahajan.jpg" className="responsive-img" alt="" /></a>
+                <img src="/assets/images/mayank-mahajan.jpg" className="responsive-img" alt="Mayank Mahajan" />
               </div>
-              <div className="title col s12 m12 l9 right  wow fadeIn" style={{ bottom, textShadow }}>
-                <h2>Mayank</h2>
-                <span>React Engineer</span>
+              <div className="title col s12 m12 l9 right  wow" style={{ bottom, textShadow, opacity: textOpacity }}>
+                <h2>
+                  Mayank
+                  <a href='' onMouseOver={mouseOver} onMouseOut={mouseOut} onClick={playSound}>
+                    <img
+                      style={{ opacity: iconOpacity }}
+                      border={0}
+                      title='Pronunciation'
+                      src={playing ? '/assets/images/sound-disabled.svg' : '/assets/images/sound.svg'}
+                      width='32'
+                      height='32'
+                    />
+                  </a>
+                </h2>
+                <span>React Engineer
+                </span>
               </div>
             </div>
 
@@ -112,11 +146,12 @@ function App() {
                   <div className="col m12 l9 s12 skill-line a5 wow" data-wow-delay="0.5s">
                     <h3>Professional Skills </h3>
                     <div><i className="fa fa-check-square"></i> React JS</div>
+                    <div><i className="fa fa-check-square"></i> Typescript</div>
+                    <div><i className="fa fa-check-square"></i> Ecma Script</div>
+                    <div><i className="fa fa-check-square"></i> Javascript</div>
                     <div><i className="fa fa-check-square"></i> SCSS</div>
                     <div><i className="fa fa-check-square"></i> Node JS</div>
                     <div><i className="fa fa-check-square"></i> Angular JS</div>
-                    <div><i className="fa fa-check-square"></i> Ecma Script</div>
-                    <div><i className="fa fa-check-square"></i> Javascript</div>
                   </div>
                 </div>
               </AnimatedSection>
@@ -133,7 +168,7 @@ function App() {
               <div className="custom-content col s12 m12 l10 wow a1 fadeIn">
                 <h2>Education</h2>
 
-                <div className="custom-content-wrapper wow a2" data-wow-delay="0.2s">
+                <div className="custom-content-wrapper wow a2 custom-content-wrapper-last" data-wow-delay="0.2s">
                   <h3>Bachelor's in Technology <span>@Guru Nanak Dev University</span></h3>
                   <span>MAY 2005 - May 2009 </span>
                   <p>Completed B.Tech. degree in Computer Science & Engineering in May, 2009</p>
@@ -147,20 +182,43 @@ function App() {
               </div>
               <div className="custom-content work-content col s12 m12 l10 wow a1">
                 <h2>Work Experience</h2>
-                <div className="custom-content-wrapper wow a2 fadeIn">
-                  <h3>Front-end Developer <span>@Sainsbury's, United Kingdom</span></h3>
-                  <span>OCT 2019 - Present </span>
+                <div className="section-item-details" ><div className="custom-content-wrapper wow a3 fadeIn">
+                  <h3>Senior Front-end Engineer <span>@J.P. Morgan, United Kingdom</span></h3>
+                  <span>OCT 2021 - Present </span>
                   <ol>
-                    <li>Development of responsive and reusable UI components for new Nectar offers using javascript, SCSS and ReactJS that meet accessibility standards across a vast array of web-capable devices and browsers.</li>
-                    <li>Integrate with third party tools like One trust cookie banner for GDPR compliance/data protection, Google firebase to toggle features remotely, Google Optimize A/B testing tool for analyzing user habits to improve user experience and conversion rate.</li>
-                    <li>Working closely with development teams of partners such as British Airways and Agoda to solution complex integration of partner offers with Nectar.</li>
-                    <li>Refactoring the existing components to reuse Sainsbury’s Luna design system wherever possible. Redesigning the existing pages to improve user experience and responsive design principles.</li>
-                    <li>Working in agile framework as an individual contributor. Responsibilities include interaction with Business stakeholders, reviewing stories/acceptance criteria, advocating for the user experience whether it be performance, accessibility, or general UX best practices and providing technical solutions.</li>
+                    <li>Development of responsive and reusable UI components for displaying and editing
+                    interest rates using ReactJS, Typescript and SCSS that meet accessibility standards across
+a vast array of web-capable devices and browsers</li>
+                    <li>Working with Java backend developers to create solutions for integrating frontend
+application with Spring API’s</li>
+                    <li>Working in agile framework as an individual contributor. Responsibilities include
+                    interaction with Business stakeholders, reviewing and estimating tasks/acceptance
+                    criteria, advocating for the user experience whether it be performance, accessibility, or
+general UX best practices and providing technical solutions</li>
+                    <li>Active participation in agile ceremonies and ticket tracking using Jira</li>
+                    <li>Unit testing the application code using React testing library and Jasmine</li>
+                    <li>Migrating Angular application to React application using Lerna</li>
+                    <li>Mentoring the team, bringing them up-to-speed</li>
                   </ol>
                 </div>
+                </div>
                 <AnimatedSection>
-                  <div className="custom-content-wrapper wow a3">
-                    <h3>Front-end Developer <span>@American Express, United Kingdom</span></h3>
+                  <div className="custom-content-wrapper wow a3 fadeIn">
+                    <h3>Front-end Engineer <span>@Sainsbury's, United Kingdom</span></h3>
+                    <span>OCT 2019 - JUN 2021</span>
+                    <ol>
+                      <li>Development of responsive and reusable UI components for new Nectar offers using javascript, SCSS and ReactJS that meet accessibility standards across a vast array of web-capable devices and browsers.</li>
+                      <li>Integrate with third party tools like One trust cookie banner for GDPR compliance/data protection, Google firebase to toggle features remotely, Google Optimize A/B testing tool for analyzing user habits to improve user experience and conversion rate.</li>
+                      <li>Working closely with development teams of partners such as British Airways and Agoda to solution complex integration of partner offers with Nectar.</li>
+                      <li>Refactoring the existing components to reuse Sainsbury’s Luna design system wherever possible. Redesigning the existing pages to improve user experience and responsive design principles.</li>
+                      <li>Working in agile framework as an individual contributor. Responsibilities include interaction with Business stakeholders, reviewing stories/acceptance criteria, advocating for the user experience whether it be performance, accessibility, or general UX best practices and providing technical solutions.</li>
+                    </ol>
+                  </div>
+                </AnimatedSection>
+
+                <AnimatedSection>
+                  <div className="custom-content-wrapper wow a3 custom-content-wrapper-last">
+                    <h3>Front-end Engineer <span>@American Express, United Kingdom</span></h3>
                     <span>MAR 2018 - OCT 2019 </span>
                     <ol>
                       <li>Third party integration of American Express CRM application with IVR (Interactive Voice Response) System using Genesis and User Customer Identification System (UCID) for identifying and authenticating the callers using HMAC authentication process for APIGEE API’s</li>
